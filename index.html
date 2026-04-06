@@ -1,291 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tom Ciszek</title>
-<meta name="description" content="Tom Ciszek. Founder of BOMForge. Catholic, husband, father.">
+<meta name="description" content="Catholic, husband, father. Founder of BOMForge. Building supply chain software for American manufacturers.">
 <meta property="og:title" content="Tom Ciszek">
-<meta property="og:description" content="Founder of BOMForge. Supply chain software for American manufacturers.">
-<meta property="og:image" content="https://tom.ms/michael-dragon.png">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:description" content="Catholic, husband, father. Founder of BOMForge. Supply chain software for American manufacturers.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>+</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script defer data-domain="t1c1.github.io" src="https://plausible.io/js/script.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#fafaf7;
-  --ink:#1a1410;
-  --ink2:#6b5a48;
-  --red:#8b2020;
-  --gold:#a08030;
-  --rule:#e0d8cc;
-  --cream:#f5f0e6;
-}
-html,body{background:var(--bg);font-family:'Cormorant Garamond',Georgia,serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+:root{--bg:#0a0f1a;--fg:#fff;--dim:rgba(255,255,255,.6);--dimmer:rgba(255,255,255,.4);--border:rgba(255,255,255,.08);--accent:#4B9CD3;--accent2:#22c55e}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:720px;margin:0 auto;padding:3rem 1.5rem 4rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
 
-/* === LAYOUT === */
-.page{display:flex;min-height:100vh}
-.left{
-  flex:0 0 460px;width:460px;
-  position:sticky;top:0;height:100vh;
-  display:flex;flex-direction:column;align-items:center;
-  padding:36px 40px 24px;
-  border-right:1px solid var(--rule);
-  overflow-y:auto;
-  background:var(--bg);
-}
-.right{
-  flex:1;padding:64px 56px;
-  display:flex;flex-direction:column;justify-content:center;
-  max-width:600px;
-}
+/* Header */
+.header{margin-bottom:2.5rem}
+h1{font-size:2rem;font-weight:600;margin-bottom:.25rem}
+.tagline{color:var(--dim);font-size:1rem;margin-bottom:1.25rem}
+.links{display:flex;flex-wrap:wrap;gap:.75rem;font-size:.875rem}
+.links a{color:var(--dimmer)}
+.links a:hover{color:var(--fg)}
 
-/* === PORTRAIT === */
-.portrait{text-align:center;margin-bottom:24px}
-.portrait img{
-  width:150px;height:150px;
-  border-radius:50%;object-fit:cover;object-position:top;
-  border:3px solid var(--rule);
-}
-.portrait-name{
-  font-family:'Cinzel',serif;font-size:14px;font-weight:700;
-  margin-top:8px;letter-spacing:1px;
-}
-.portrait-title{font-size:12px;color:var(--ink2);font-style:italic;margin-top:2px}
+/* Section */
+h2{font-size:1.15rem;font-weight:600;margin-top:2.75rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
 
-/* === PRAYER TABS === */
-.prayer-tabs{
-  display:flex;justify-content:center;gap:0;margin-bottom:20px;
-  border-bottom:1px solid var(--rule);
-}
-.prayer-tab{
-  font-family:'Cinzel',serif;font-size:11px;letter-spacing:1.5px;
-  padding:8px 16px;color:var(--ink2);background:none;border:none;
-  cursor:pointer;border-bottom:2px solid transparent;
-  transition:all .2s;text-transform:uppercase;
-}
-.prayer-tab.active{color:var(--ink);border-bottom-color:var(--gold)}
-.prayer-tab:hover{color:var(--ink)}
+/* Timeline */
+.timeline{position:relative;padding-left:1.5rem;margin-bottom:.5rem}
+.timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;width:2px;background:var(--border)}
+.t-item{position:relative;margin-bottom:1.25rem}
+.t-item::before{content:'';position:absolute;left:-1.5rem;top:.55rem;width:8px;height:8px;background:var(--accent);border-radius:50%;transform:translateX(-3px)}
+.t-item.now::before{background:var(--accent2)}
+.t-year{font-size:.7rem;color:var(--dimmer);font-family:monospace}
+.t-name{font-weight:600}
+.t-desc{font-size:.875rem;color:var(--dim)}
 
-/* === PRAYER === */
-.prayer-section{display:none}
-.prayer-section.active{display:block}
-.prayer-heading{
-  font-family:'Cinzel',serif;font-size:18px;text-align:center;
-  letter-spacing:2px;margin-bottom:3px;
-}
-.prayer-by{font-size:13px;text-align:center;color:var(--ink2);font-style:italic;margin-bottom:20px}
-.prayer{font-size:16px;line-height:1.8;text-align:justify;hyphens:auto;max-width:360px;margin:0 auto}
-.prayer p{margin-bottom:12px}
-.prayer .first-p::first-letter{
-  float:left;font-family:'Cinzel',serif;font-size:62px;line-height:50px;
-  font-weight:900;color:var(--red);padding:2px 8px 0 0;
-}
-.prayer .indent{padding-left:24px;font-style:italic;margin-bottom:4px}
-.prayer .may{text-align:center;font-style:italic;margin-bottom:4px}
-.prayer .amen{text-align:center;font-weight:600;margin-top:8px}
+/* Project grid */
+.projects{display:grid;gap:.75rem}
+.p-card{display:block;padding:.875rem 1rem;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px;color:var(--fg);text-decoration:none;transition:border-color .15s}
+.p-card:hover{border-color:rgba(255,255,255,.18);text-decoration:none}
+.p-head{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.2rem}
+.p-name{font-weight:600;font-size:.9rem}
+.p-tag{font-size:.65rem;background:rgba(75,156,211,.15);color:var(--accent);padding:.1rem .45rem;border-radius:3px}
+.p-tag.green{background:rgba(34,197,94,.15);color:#22c55e}
+.p-tag.red{background:rgba(239,68,68,.15);color:#ef4444}
+.p-tag.amber{background:rgba(217,119,6,.15);color:#f59e0b}
+.p-tag.purple{background:rgba(168,85,247,.15);color:#a855f7}
+.p-desc{font-size:.8rem;color:var(--dim)}
 
-.divider{text-align:center;color:var(--rule);font-size:12px;letter-spacing:12px;padding:10px 0}
-.scripture{font-size:12px;text-align:center;color:var(--ink2);font-style:italic;line-height:1.5;max-width:340px;margin:0 auto;padding-top:10px;border-top:1px solid var(--rule)}
-.greek{font-size:13px;text-align:center;color:var(--ink);margin-top:8px;letter-spacing:.5px}
+/* CSV ventures list */
+.ventures{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem;margin-top:.5rem}
+.v-item{display:block;padding:.5rem .75rem;font-size:.8rem;border:1px solid var(--border);border-radius:6px;color:var(--fg);text-decoration:none;transition:border-color .15s}
+.v-item:hover{border-color:rgba(255,255,255,.18);text-decoration:none}
+.v-name{font-weight:500;font-size:.8rem}
+.v-desc{font-size:.7rem;color:var(--dim);margin-top:.1rem}
 
-/* === DOROTHY DAY PORTRAIT === */
-.dorothy-portrait{text-align:center;margin-bottom:20px}
-.dorothy-portrait img{
-  width:200px;height:auto;
-  border:3px solid var(--rule);
-  filter:sepia(0.15) contrast(1.05);
-}
-.dorothy-portrait .caption{
-  font-size:11px;color:var(--ink2);font-style:italic;margin-top:6px;
-  line-height:1.4;
-}
+/* Footer */
+.divider{border-top:1px solid var(--border);margin:2.75rem 0}
+.footer{color:var(--dimmer);font-size:.8rem}
+.jmj{color:rgba(255,255,255,.15);font-size:.7rem;text-align:center;margin-top:2rem;letter-spacing:3px}
 
-/* === WOODCUT === */
-.woodcut{width:200px;margin:20px auto 0;text-align:center}
-.woodcut img{width:100%;height:auto;opacity:.9}
-
-/* === LANGUAGE === */
-.lang-toggle{
-  display:flex;justify-content:center;gap:8px;margin-top:14px;
-}
-.lang-btn{
-  font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--ink2);
-  background:none;border:1px solid var(--rule);padding:4px 12px;
-  cursor:pointer;transition:all .2s;
-}
-.lang-btn:hover,.lang-btn.active{border-color:var(--gold);color:var(--ink)}
-
-/* === RIGHT COLUMN === */
-.name{font-family:'Cinzel',serif;font-size:36px;font-weight:700;margin-bottom:6px}
-.role{font-size:16px;color:var(--ink2);margin-bottom:28px}
-.bio{font-size:18px;line-height:1.75;margin-bottom:32px;max-width:480px}
-.bio a{color:var(--red);text-decoration:none;border-bottom:1px solid transparent;transition:border .2s}
-.bio a:hover{border-bottom-color:var(--red)}
-
-.links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
-.links a{
-  padding:10px 20px;border:1px solid var(--rule);color:var(--ink);
-  text-decoration:none;font-size:14px;transition:all .2s;
-}
-.links a:hover{border-color:var(--gold);color:var(--red)}
-
-.writing{padding-top:28px;border-top:1px solid var(--rule)}
-.writing h3{font-family:'Cinzel',serif;font-size:20px;margin-bottom:6px}
-.writing p{font-size:15px;color:var(--ink2);margin-bottom:16px}
-.cta{
-  display:inline-block;padding:12px 28px;background:var(--ink);color:var(--bg);
-  text-decoration:none;font-size:14px;letter-spacing:.5px;transition:background .2s;
-}
-.cta:hover{background:var(--red)}
-.jmj{font-size:12px;color:var(--rule);text-align:center;margin-top:36px;letter-spacing:4px}
-
-/* === ANIMATIONS === */
-@keyframes glow{0%,100%{box-shadow:0 0 15px rgba(160,128,48,.05)}50%{box-shadow:0 0 30px rgba(160,128,48,.12)}}
-.portrait img{animation:glow 5s ease-in-out infinite}
-
-/* === MOBILE === */
-@media(max-width:800px){
-  .page{flex-direction:column}
-  .left{
-    flex:none;width:100%;height:auto;position:static;
-    padding:env(safe-area-inset-top,20px) 24px 24px;
-    border-right:none;border-bottom:1px solid var(--rule);
-  }
-  .right{padding:28px 24px;max-width:100%}
-  .portrait img{width:160px;height:160px}
-  .portrait-name{font-size:15px}
-  .dorothy-portrait img{width:180px}
-  .prayer{font-size:16px;max-width:100%}
-  .prayer .first-p::first-letter{font-size:54px;line-height:44px}
-  .woodcut{width:160px}
-  .name{font-size:26px}
-  .bio{font-size:16px}
-  .links a{padding:12px 18px}
-  .prayer-tab{font-size:10px;padding:6px 10px}
+@media(max-width:480px){
+  .container{padding:2rem 1rem 3rem}
+  h1{font-size:1.6rem}
+  .ventures{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-<div class="page">
-  <!-- LEFT: Prayer Card -->
-  <div class="left">
-    <!-- Fr. Ciszek portrait (default) -->
-    <div class="portrait" id="portrait-ciszek">
-      <img src="/media/fr-walter-ciszek.jpg" alt="Servant of God Fr. Walter Ciszek SJ">
-      <div class="portrait-name">Fr. Walter Ciszek, SJ</div>
-      <div class="portrait-title">Servant of God (1904&ndash;1984)</div>
-    </div>
+<div class="container">
 
-    <!-- Dorothy Day portrait (shown on Dorothy tab) -->
-    <div class="portrait" id="portrait-dorothy" style="display:none">
-      <img src="/dorothy-day.jpg" alt="Servant of God Dorothy Day at the Catholic Worker farm in Easton, Pennsylvania, ca. 1938" style="border-radius:0;width:200px;height:auto">
-      <div class="portrait-name">Dorothy Day</div>
-      <div class="portrait-title">Servant of God (1897&ndash;1980)</div>
-    </div>
-
-    <!-- Prayer tabs -->
-    <div class="prayer-tabs">
-      <button class="prayer-tab active" onclick="showPrayer('surrender')">Surrender</button>
-      <button class="prayer-tab" onclick="showPrayer('dorothy')">Dorothy Day</button>
-    </div>
-
-    <!-- Prayer of Surrender -->
-    <div class="prayer-section active" id="prayer-surrender">
-      <div class="prayer-heading">PRAYER OF SURRENDER</div>
-      <div class="prayer-by">Fr. Walter Ciszek, SJ</div>
-      <div class="prayer" id="surrender-text">
-        <p class="first-p">Lord, Jesus Christ, I ask the grace to accept the sadness in my heart, as your will for me, in this moment. I offer it up, in union with your sufferings, for those who are in deepest need of your redeeming grace. I surrender myself to your Father&rsquo;s will and I ask you to help me to move on to the next task that you have set for me.</p>
-        <p>Spirit of Christ, help me to enter into a deeper union with you. Lead me away from dwelling on the hurt I feel:</p>
-        <p class="indent">to thoughts of charity for those who need my love,</p>
-        <p class="indent">to thoughts of compassion for those who need my care,</p>
-        <p class="indent">and to thoughts of giving to those who need my help.</p>
-        <p>As I give myself to you, help me to provide for the salvation of those who come to me in need.</p>
-        <p class="may">May I find my healing in this giving.</p>
-        <p class="may">May I always accept God&rsquo;s will.</p>
-        <p class="may">May I find my true self by living for others in a spirit of sacrifice and suffering.</p>
-        <p class="may">May I die more fully to myself, and live more fully in you.</p>
-        <p>As I seek to surrender to the Father&rsquo;s will, may I come to trust that he will do everything for me.</p>
-      </div>
-      <div class="divider">&#10053; &#10053; &#10053;</div>
-      <div class="scripture">&ldquo;And there was war in heaven: Michael and his angels fought against the dragon; and the dragon fought and his angels, and prevailed not.&rdquo;<br>Revelation 12:7&ndash;8</div>
-      <div class="greek">&#x1F41; &#x039C;&#x03B9;&#x03C7;&#x03B1;&#x1F74;&#x03BB; &#x03BA;&#x03B1;&#x03C4;&#x03AD;&#x03C7;&#x03C9;&#x03BD; &#x03C4;&#x1F74;&#x03BD; &#x1F00;&#x03BD;&#x03BF;&#x03BC;&#x03AF;&#x03B1;&#x03BD;</div>
-      <div class="lang-toggle">
-        <button class="lang-btn active" onclick="setLang('en')">English</button>
-        <button class="lang-btn" onclick="setLang('es')">Espa&ntilde;ol</button>
-      </div>
-    </div>
-
-    <!-- Dorothy Day Prayer -->
-    <div class="prayer-section" id="prayer-dorothy">
-      <div class="prayer-heading">PRAYER FOR THE CANONIZATION</div>
-      <div class="prayer-by">Servant of God Dorothy Day</div>
-      <div class="prayer">
-        <p class="first-p">God our Creator, your servant Dorothy Day exemplified the Catholic faith by her conversion, life of prayer and voluntary poverty, works of mercy, and witness to the justice and peace of the Gospel.</p>
-        <p>May her life inspire people to turn to Christ as their Savior and guide, to see his face in the world&rsquo;s poor and to raise their voices for the justice of God&rsquo;s kingdom.</p>
-        <p>We pray that you grant the favors we ask through her intercession so that her goodness and holiness may be more widely recognized and one day the Church may proclaim her Saint.</p>
-        <p class="amen">We ask this through Christ our Lord. Amen.</p>
-      </div>
-      <div class="divider">&#10053; &#10053; &#10053;</div>
-      <div class="scripture">&ldquo;The greatest challenge of the day is: how to bring about a revolution of the heart, a revolution which has to start with each one of us.&rdquo;<br>&mdash; Dorothy Day</div>
-      <div style="text-align:center;margin-top:12px"><a href="https://dorothydayasaint.info/" style="font-size:12px;color:var(--ink2)" target="_blank">dorothydayasaint.info</a></div>
-    </div>
-
-    <!-- St. Michael woodcut at BOTTOM -->
-    <div class="woodcut">
-      <img src="/michael-dragon.png" alt="St. Michael the Archangel casting down the dragon">
-    </div>
-  </div>
-
-  <!-- RIGHT: Bio -->
-  <div class="right">
-    <div class="name">Tom Ciszek</div>
-    <div class="role">Founder, BOMForge</div>
-    <div class="bio">
-      I build supply chain software for American manufacturers. Before that I worked at Amazon Robotics, Brain Corp, Bird, and Twitter.<br><br>
-      I also run <a href="https://catholicsocialventures.com">Catholic Social Ventures</a>, a portfolio of Catholic apps for the faithful.
-    </div>
+  <!-- Header -->
+  <div class="header">
+    <h1>Tom Ciszek</h1>
+    <p class="tagline">Catholic, husband, father. Software, hardware, and the squishy stuff in between.</p>
     <div class="links">
       <a href="https://bomforge.com">BOMForge</a>
       <a href="https://catholicsocialventures.com">Catholic Social Ventures</a>
       <a href="https://x.com/ciszek">@ciszek</a>
       <a href="https://linkedin.com/in/ciszek">LinkedIn</a>
       <a href="https://github.com/t1c1">GitHub</a>
+      <a href="https://tom.ms">tom.ms</a>
     </div>
-    <div class="writing">
-      <h3>Writing</h3>
-      <p>Short notes on manufacturing, building things, and the faith.</p>
-      <a href="https://ciszek.substack.com" class="cta">Subscribe on Substack</a>
-    </div>
-    <div class="jmj">+J.M.J.+</div>
   </div>
+
+  <!-- Currently -->
+  <h2>Currently</h2>
+  <div class="timeline">
+    <div class="t-item now">
+      <div class="t-year">2025</div>
+      <div class="t-name"><a href="https://bomforge.com">BOMForge</a></div>
+      <div class="t-desc">Founder &amp; CEO. Supply chain intelligence for American manufacturers.</div>
+    </div>
+    <div class="t-item now">
+      <div class="t-year">2025</div>
+      <div class="t-name"><a href="https://www.palantir.com/american-tech-fellowship/">Palantir American Tech Fellow</a></div>
+      <div class="t-desc">Defense and critical infrastructure</div>
+    </div>
+  </div>
+
+  <!-- Manufacturing & Infrastructure -->
+  <h2>Manufacturing &amp; Infrastructure</h2>
+  <div class="projects">
+    <a href="https://bomforge.com" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">BOMForge</span>
+        <span class="p-tag green">Building</span>
+        <span class="p-tag">Supply Chain</span>
+      </div>
+      <span class="p-desc">BOM management, supplier discovery, and procurement analytics for American manufacturing. 380K+ manufacturers indexed.</span>
+    </a>
+    <a href="https://madeinamericasolutions.com" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">Made in America Solutions</span>
+        <span class="p-tag">Gov Buyers</span>
+      </div>
+      <span class="p-desc">Demo site for government procurement teams. Domestic supplier search and compliance tools.</span>
+    </a>
+    <a href="https://trade-schools.pages.dev/trade-schools/" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">Trade Schools Map</span>
+        <span class="p-tag red">1,000+ Schools</span>
+        <span class="p-tag">All 50 States</span>
+      </div>
+      <span class="p-desc">Interactive map of vocational schools and skilled trades programs across America.</span>
+    </a>
+    <a href="https://teamamerica.ai" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">TeamAmerica.AI</span>
+        <span class="p-tag red">AI Tools</span>
+        <span class="p-tag">Made in USA</span>
+      </div>
+      <span class="p-desc">AI tools and resources for American builders and makers.</span>
+    </a>
+  </div>
+
+  <!-- Tools & Open Source -->
+  <h2>Tools &amp; Open Source</h2>
+  <div class="projects">
+    <a href="https://www.actorreader.com" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">Actor Reader</span>
+        <span class="p-tag red">AI-Powered</span>
+        <span class="p-tag purple">ElevenLabs Grant</span>
+      </div>
+      <span class="p-desc">AI-powered script analysis for actors and filmmakers.</span>
+    </a>
+    <a href="https://crypto.com/nft/collection/a4ab51efef801d9deebda195e5f1e262" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">BeatHeadz NFT</span>
+        <span class="p-tag green">$2.4M Volume</span>
+        <span class="p-tag purple">10K PFPs</span>
+      </div>
+      <span class="p-desc">Co-founded generative art collection with Aloe Blacc and Phil Lumbang. 2,753 holders.</span>
+    </a>
+    <a href="https://www.figma.com/community/resume-templates?resource_type=plugins" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">md2fig</span>
+        <span class="p-tag purple">#1 Figma Resume Plugin</span>
+      </div>
+      <span class="p-desc">Figma plugin to generate beautiful resumes from Markdown. Open source.</span>
+    </a>
+  </div>
+
+  <!-- Catholic Social Ventures -->
+  <h2>Catholic Social Ventures</h2>
+  <p style="color:var(--dim);font-size:.875rem;margin-bottom:1rem">A portfolio of Catholic apps and websites for the faithful. <a href="https://catholicsocialventures.com">catholicsocialventures.com</a></p>
+
+  <div class="projects" style="margin-bottom:1rem">
+    <a href="https://stations.app" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">Stations of the Cross</span>
+        <span class="p-tag amber">stations.app</span>
+      </div>
+      <span class="p-desc">Digital prayer pathway rooted in Catholic tradition, guiding souls through contemplative practices and ancient devotions.</span>
+    </a>
+    <a href="https://visitmary.com" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">Visit Mary</span>
+        <span class="p-tag amber">Rosary PWA</span>
+      </div>
+      <span class="p-desc">Pray the Rosary online with audio, multilingual support, and guided meditations on the mysteries.</span>
+    </a>
+    <a href="https://chatgpt.com/g/g-MAdfUqnYi-catholic-saints-speak-to-a-saint-religion-talks" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">Catholic Saints GPT</span>
+        <span class="p-tag green">5K+ Chats</span>
+      </div>
+      <span class="p-desc">Reverent AI chat about Catholic saints and teaching.</span>
+    </a>
+  </div>
+
+  <!-- Smaller CSV ventures -->
+  <div class="ventures">
+    <a href="https://ubimissa.com" class="v-item" target="_blank">
+      <div class="v-name">UbiMissa</div>
+      <div class="v-desc">Find Mass anywhere in the world</div>
+    </a>
+    <a href="https://lachurches.org" class="v-item" target="_blank">
+      <div class="v-name">LA Churches</div>
+      <div class="v-desc">Mass, confession, adoration in LA</div>
+    </a>
+    <a href="https://saintforaminute.com" class="v-item" target="_blank">
+      <div class="v-name">Saint for a Minute</div>
+      <div class="v-desc">Daily saint encounters</div>
+    </a>
+    <a href="https://schoolofsaints.com" class="v-item" target="_blank">
+      <div class="v-name">School of Saints</div>
+      <div class="v-desc">Learning from the saints</div>
+    </a>
+    <a href="https://franciscanprayer.com" class="v-item" target="_blank">
+      <div class="v-name">Franciscan Prayer</div>
+      <div class="v-desc">Liturgy of the Hours, Franciscan tradition</div>
+    </a>
+    <a href="https://ignatiusguide.com" class="v-item" target="_blank">
+      <div class="v-name">Ignatius Guide</div>
+      <div class="v-desc">Spiritual Exercises and the Examen</div>
+    </a>
+    <a href="https://viasancta.org" class="v-item" target="_blank">
+      <div class="v-name">Via Sancta</div>
+      <div class="v-desc">Sacred way prayer pathway</div>
+    </a>
+    <a href="https://requiemplanner.com" class="v-item" target="_blank">
+      <div class="v-name">Requiem Planner</div>
+      <div class="v-desc">Catholic funeral planning</div>
+    </a>
+    <a href="https://sacredprayercards.com" class="v-item" target="_blank">
+      <div class="v-name">Sacred Prayer Cards</div>
+      <div class="v-desc">Traditional prayer cards, digital</div>
+    </a>
+    <a href="https://celiaccatholic.com" class="v-item" target="_blank">
+      <div class="v-name">Celiac Catholic</div>
+      <div class="v-desc">Resources for Catholics with celiac</div>
+    </a>
+    <a href="https://catholicmarriageplanner.com" class="v-item" target="_blank">
+      <div class="v-name">Catholic Marriage Planner</div>
+      <div class="v-desc">Catholic wedding preparation</div>
+    </a>
+    <a href="https://text2pray.com" class="v-item" target="_blank">
+      <div class="v-name">Text2Pray</div>
+      <div class="v-desc">Prayer via text message</div>
+    </a>
+    <a href="https://tapbless.com" class="v-item" target="_blank">
+      <div class="v-name">TapBless</div>
+      <div class="v-desc">Request or offer a blessing</div>
+    </a>
+    <a href="https://smartpews.com" class="v-item" target="_blank">
+      <div class="v-name">SmartPews</div>
+      <div class="v-desc">Technology for parishes</div>
+    </a>
+    <a href="https://mediamindfulness.com" class="v-item" target="_blank">
+      <div class="v-name">Media Mindfulness</div>
+      <div class="v-desc">Digital wellness for families</div>
+    </a>
+    <a href="https://northcarolinachurches.org" class="v-item" target="_blank">
+      <div class="v-name">NC Churches</div>
+      <div class="v-desc">North Carolina parish finder</div>
+    </a>
+    <a href="https://westminsterchurches.org" class="v-item" target="_blank">
+      <div class="v-name">Westminster Churches</div>
+      <div class="v-desc">Westminster area parishes</div>
+    </a>
+    <a href="https://episcopalchurchfinder.com" class="v-item" target="_blank">
+      <div class="v-name">Episcopal Church Finder</div>
+      <div class="v-desc">Find Episcopal parishes</div>
+    </a>
+    <a href="https://catholicsocialpress.com" class="v-item" target="_blank">
+      <div class="v-name">CSV Press</div>
+      <div class="v-desc">Publishing and commentary</div>
+    </a>
+    <a href="https://catholicsocialbooks.com" class="v-item" target="_blank">
+      <div class="v-name">CSV Books</div>
+      <div class="v-desc">Catholic social teaching library</div>
+    </a>
+    <a href="https://catholicsocialgifts.com" class="v-item" target="_blank">
+      <div class="v-name">CSV Gifts</div>
+      <div class="v-desc">Faith-inspired goods</div>
+    </a>
+    <a href="https://catholicsocialstore.com" class="v-item" target="_blank">
+      <div class="v-name">CSV Store</div>
+      <div class="v-desc">Catholic marketplace</div>
+    </a>
+    <a href="https://catholicsocialbingo.com" class="v-item" target="_blank">
+      <div class="v-name">CSV Bingo</div>
+      <div class="v-desc">Catholic bingo events</div>
+    </a>
+    <a href="https://catholicsocialadventures.com" class="v-item" target="_blank">
+      <div class="v-name">CSV Adventures</div>
+      <div class="v-desc">Faith-based experiences</div>
+    </a>
+    <a href="https://catholicsocialapps.com" class="v-item" target="_blank">
+      <div class="v-name">CSV Apps</div>
+      <div class="v-desc">Mobile apps studio</div>
+    </a>
+  </div>
+
+  <!-- Other Projects -->
+  <h2>Other</h2>
+  <div class="projects">
+    <a href="https://runwiththetorch.com" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">Run with the Torch</span>
+        <span class="p-tag amber">LA 2028</span>
+      </div>
+      <span class="p-desc">LA 2028 Olympic Torch Relay journey.</span>
+    </a>
+    <a href="https://inchive.com" class="p-card" target="_blank">
+      <div class="p-head">
+        <span class="p-name">Inchive</span>
+      </div>
+      <span class="p-desc">Long-term data storage and archival solutions.</span>
+    </a>
+  </div>
+
+  <!-- Work History -->
+  <h2>Work History</h2>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-year">2022 &ndash; 2025</div>
+      <div class="t-name">Amazon Robotics</div>
+      <div class="t-desc">Manufacturing systems</div>
+    </div>
+    <div class="t-item">
+      <div class="t-year">2021 &ndash; 2022</div>
+      <div class="t-name">Brain Corp</div>
+      <div class="t-desc">Autonomous robots</div>
+    </div>
+    <div class="t-item">
+      <div class="t-year">2019 &ndash; 2021</div>
+      <div class="t-name">Bird</div>
+      <div class="t-desc">Operations research</div>
+    </div>
+    <div class="t-item">
+      <div class="t-year">2014 &ndash; 2019</div>
+      <div class="t-name">Twitter</div>
+      <div class="t-desc">Ads research</div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <h2>Education</h2>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-name">University of North Carolina at Chapel Hill</div>
+      <div class="t-desc">M.S. Information Science. B.S. Operations Research, Mathematical Decision Sciences.</div>
+      <div class="t-desc">Morehead-Cain Scholar</div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <h2>Contact</h2>
+  <div class="links" style="font-size:.9rem">
+    <a href="https://tomciszek.com">tomciszek.com</a>
+    <a href="https://x.com/ciszek">@ciszek</a>
+    <a href="https://linkedin.com/in/ciszek">LinkedIn</a>
+    <a href="https://github.com/t1c1">GitHub</a>
+    <span style="color:var(--dim)">Signal: ciszek.24</span>
+  </div>
+
+  <div class="divider"></div>
+  <p class="footer">Los Angeles &middot; <a href="https://tomciszek.com">tomciszek.com</a> &middot; <a href="https://tom.ms">tom.ms</a></p>
+  <div class="jmj">+J.M.J.+</div>
 </div>
-
-<script>
-// Prayer tab switching with portrait swap
-function showPrayer(id){
-  document.querySelectorAll('.prayer-section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.prayer-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('prayer-'+id).classList.add('active');
-  event.target.classList.add('active');
-
-  // Swap portrait
-  document.getElementById('portrait-ciszek').style.display = id==='surrender' ? 'block' : 'none';
-  document.getElementById('portrait-dorothy').style.display = id==='dorothy' ? 'block' : 'none';
-}
-
-// Language toggle for Surrender prayer
-const enHTML=document.getElementById('surrender-text').innerHTML;
-const esHTML='<p class="first-p">Se\u00f1or Jesucristo, te pido la gracia de aceptar la tristeza que hay en mi coraz\u00f3n, como tu voluntad para m\u00ed, en este momento. Te la ofrezco, unida a tus sufrimientos, por aquellos que m\u00e1s necesitan de tu gracia redentora. Me entrego a la voluntad de tu Padre y te pido que me ayudes a pasar a la pr\u00f3xima tarea que t\u00fa me has encomendado.</p><p>Esp\u00edritu de Cristo, ay\u00fadame a entrar en una uni\u00f3n m\u00e1s profunda contigo. Al\u00e9jame de permanecer en el dolor que siento:</p><p class="indent">hacia pensamientos de caridad por quienes necesitan mi amor,</p><p class="indent">hacia pensamientos de compasi\u00f3n por quienes necesitan mi cuidado,</p><p class="indent">y hacia pensamientos de entrega por quienes necesitan mi ayuda.</p><p>Al entregarme a ti, ay\u00fadame a contribuir a la salvaci\u00f3n de quienes acuden a m\u00ed en su necesidad.</p><p class="may">Que encuentre mi sanaci\u00f3n en esta entrega.</p><p class="may">Que acepte siempre la voluntad de Dios.</p><p class="may">Que encuentre mi verdadero yo viviendo para los dem\u00e1s en esp\u00edritu de sacrificio y sufrimiento.</p><p class="may">Que muera m\u00e1s plenamente a m\u00ed mismo, y viva m\u00e1s plenamente en ti.</p><p>Al buscar entregarme a la voluntad del Padre, que llegue a confiar en que \u00c9l har\u00e1 todo por m\u00ed.</p>';
-let lang='en';
-function setLang(l){
-  lang=l;
-  document.getElementById('surrender-text').innerHTML=l==='es'?esHTML:enHTML;
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  event.target.classList.add('active');
-}
-</script>
 </body>
 </html>
